@@ -1,6 +1,6 @@
 # Invoca::Utils
 
-A public collection of helpers used in multiple project.
+A public collection of helpers used in multiple projects
 
 ## Installation
 
