@@ -5,19 +5,8 @@ class ::Time
   end
 
   #rfc3339ms is like rfc3339 but with milliseconds
-  if RUBY_VERSION < "1.9.3"
-    def rfc3339ms
-      strftime("%Y-%m-%dT%H:%M:%S.#{ms_for_3339}%z")
-    end
-
-    def ms_for_3339
-      @ms_for_3339 ||= ("%03.3d" % (self.to_ms % 1000))
-    end
-    private :ms_for_3339
-  else
-    def rfc3339ms
-      strftime("%Y-%m-%dT%H:%M:%S.%L%z")
-    end
+  def rfc3339ms
+    strftime("%Y-%m-%dT%H:%M:%S.%L%z")
   end
 
   def beginning_of_hour
