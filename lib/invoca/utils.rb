@@ -1,3 +1,6 @@
+require 'active_support/all'
+require 'hobo_support'
+
 module Invoca
   module Utils
   end
