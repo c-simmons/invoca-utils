@@ -96,8 +96,8 @@ class Diff
                   add.map { |t| "+ #{format t}\n"}.join +
                   (arg.nil? ? '' : "  #{format arg}\n")
                 when 'c'
-                  del.map_with_index { |t, del_index| "- #{format t}\n#{ nested_compare( del, add, del_index ) }"}.join +
-                  add.map { |t| "+ #{format t}\n"}.join
+                  del.map_with_index { |t, del_index| "- #{format t}\n#{nested_compare(del, add, del_index)}" }.join +
+                  add.map { |t| "+ #{format t}\n" }.join
                 end
             end
           end
