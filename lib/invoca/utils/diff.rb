@@ -87,7 +87,7 @@ class Diff
               result << "  #{format arg}\n" unless arg.nil? || options[:short_description]
             end
             if curr_diff && curr_diff[1].first == index
-              verb, a_range, b_range, del, add = curr_diff
+              verb, _a_range, _b_range, del, add = curr_diff
               result <<
                 case verb
                 when 'd'
@@ -96,8 +96,8 @@ class Diff
                   add.map { |t| "+ #{format t}\n"}.join +
                   (arg.nil? ? '' : "  #{format arg}\n")
                 when 'c'
-                  del.map_with_index { |t,index| "- #{format t}\n#{ nested_compare( del, add, index ) }"}.join +
-                  add.map_with_index { |t,index| "+ #{format t}\n"}.join
+                  del.map_with_index { |t, del_index| "- #{format t}\n#{nested_compare(del, add, del_index)}" }.join +
+                  add.map { |t| "+ #{format t}\n" }.join
                 end
             end
           end
